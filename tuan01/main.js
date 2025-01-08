@@ -1,20 +1,11 @@
-function calcAverage(scores) {
-    let size = scores.length
-    let sum = 0;
-    for (i = 0; i < size; i++) {
-        sum += scores[i];
-    }
-    return sum / size;
+function calcTip(bills) {
+    return bills.map((bill, index) => {
+        if (bill >= 50 && bill <= 300) {
+            return bill * 1.15
+        } else {
+            return bill * 1.2
+        }
+    })
 }
 
-function checkWinner(avgDolhins, avgKoalas) {
-    if (avgDolhins >= avgKoalas * 2) {
-        console.log("Dolphins win")
-    } else if (avgKoalas >= avgDolhins * 2) {
-        console.log("Koalas win")
-    } else {
-        console.log("no team win")
-    }
-}
-
-checkWinner(calcAverage([44, 23, 71]), calcAverage([65, 54, 49]))
+console.log(calcTip([125, 555, 44]))
