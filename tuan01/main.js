@@ -1,37 +1,28 @@
-const info = {
-    data1: {
-        mark: {
-            weights: 78,
-            tall: 1.69
-        },
-        john: {
-            weights: 92,
-            tall: 1.95
-        },
-    },
-    data2: {
-        mark: {
-            weights: 95,
-            tall: 1.88
-        },
-        john: {
-            weights: 85,
-            tall: 1.76
-        },
-    },
+let tips = []
+let totals = []
+
+function calcTip(bills) {
+    return bills.map((bill, index) => {
+        if (bill >= 50 && bill <= 300) {
+            tips = [...tips, bill * 0.15]
+            totals = [...totals, bill * 1.15]
+        } else {
+            tips = [...tips, bill * 0.2]
+            totals = [...totals, bill * 1.2]
+        }
+    })
 }
 
-function BMI(data) {
-    let mass = data.weights
-    let height = data.tall
-    let result = mass / (height * height)
-    return result.toFixed(1)
+function calcAverage(totals) {
+    let size = totals.length
+    let sum = 0;
+    for (i = 0; i < size; i++) {
+        sum += totals[i];
+    }
+    return sum / size;
 }
 
-var markHigherBMI = BMI(info.data2.mark) > BMI(info.data2.john)
-
-if (markHigherBMI) {
-    console.log(`Mark's BMI (${BMI(info.data2.mark)}) is higher than John's (${BMI(info.data2.john)})!`)
-} else {
-    console.log(`John's BMI (${BMI(info.data2.john)}) is higher than Mark's (${BMI(info.data2.mark)})!`)
-}
+calcTip([22, 295, 176, 440, 37, 105, 10, 1100, 86, 52])
+console.log(calcAverage(totals))
+console.log(tips)
+console.log(totals)
