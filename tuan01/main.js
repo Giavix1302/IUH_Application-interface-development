@@ -1,17 +1,25 @@
-var Mark_mass = 78
-var Mark_height = 1.69
-var John_mass = 92
-var John_height = 1.95
+const dolphins = [97, 112, 101]
+const koalas = [109, 95, 123]
 
-function BMI(mass, height) {
-    return mass / (height * height)
+
+function handleAverageScores(scores) {
+    let avgScores = 0;
+    scores.forEach(element => {
+        avgScores += element
+    });
+    return (avgScores / scores.length);
 }
-console.log("Mark's BMI", BMI(Mark_mass, Mark_height))
-console.log("John's BMI", BMI(John_mass, John_height))
-if(BMI(Mark_mass, Mark_height) > BMI(John_mass, John_height)) {
-    console.log(`Mark's BMI (${BMI(Mark_mass, Mark_height)}) is higher than John's (${BMI(John_mass, John_height)})!`)
+
+if (handleAverageScores(dolphins) < 100 && (handleAverageScores(koalas) < 100)) {
+    console.log("noteam win!!");
 } else {
-    console.log(`John's BMI (${BMI(John_mass, John_height)}) is higher than Mark's (${BMI(Mark_mass, Mark_height)})!`)
+    if (handleAverageScores(dolphins) === handleAverageScores(koalas)) {
+        console.log("two team draw!!")
+    } else if (handleAverageScores(dolphins) > handleAverageScores(koalas)) {
+        console.log("dolphins win!!")
+    } else {
+        console.log("koalas win!!")
+    }
 }
 
 
