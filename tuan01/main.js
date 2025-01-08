@@ -1,18 +1,20 @@
-
-function calculateTip(billValue) {
-    
-    const tip = (billValue >= 50 && billValue <= 300) ? billValue * 0.15 : billValue * 0.20;
-
-    const totalValue = billValue + tip;
-    
-    console.log(`The bill was ${billValue}, the tip was ${tip.toFixed(2)}, and the total value ${totalValue.toFixed(2)}`);
+function calcAverage(scores) {
+    let size = scores.length
+    let sum = 0;
+    for (i = 0; i < size; i++) {
+        sum += scores[i];
+    }
+    return sum / size;
 }
 
+function checkWinner(avgDolhins, avgKoalas) {
+    if (avgDolhins >= avgKoalas * 2) {
+        console.log("Dolphins win")
+    } else if (avgKoalas >= avgDolhins * 2) {
+        console.log("Koalas win")
+    } else {
+        console.log("no team win")
+    }
+}
 
-const billValues = [275, 40, 430];
-
-billValues.forEach(bill => calculateTip(bill));
-
-
-
-
+checkWinner(calcAverage([44, 23, 71]), calcAverage([65, 54, 49]))
